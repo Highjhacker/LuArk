@@ -20,6 +20,11 @@ Ark API Wrapper in Lua.
 ### Account
 
 ```lua
+local Account = require('account')
+local acc = Account()
+print(acc:get_top_accounts({limit=1}))
+
+>>>{"success":true,"accounts":[{"address":"AUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv","balance":"2125000000000000","publicKey":"021d03bace0687a1a5e797f884b13fb46f817ec32de1374a7f223f24404401d220"}]}
 
 ```
 
