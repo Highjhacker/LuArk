@@ -1,6 +1,3 @@
-![Imgur](https://i.imgur.com/ysh3akS.png)
-
-
 # LuArk
 
 Ark API Wrapper in Lua.
