@@ -1,25 +1,26 @@
 language: c
 
+sudo: false
+
 env:
   global:
     - LUAROCKS=2.4.1
   matrix:
     - LUA=lua5.3
+    - LUA=luajit
+    - LUA=luajit SERVER=openresty
 
 before_install:
-
+  - source .travis/setenv_lua.sh
 install:
-    - |
-      travis_retry wget https://keplerproject.github.io/luarocks/releases/luarocks-2.4.1.tar.gz
-      tar xf luarocks-2.4.1.tar.gz
-      (cd luarocks-2.4.1 \
-        && ./configure --lua-version=5.3 --with-lua-include=${LUAINCLUDE} ${LUAROCKS_ARGS} \
-        && make build \
-        && sudo make install)
     - luarocks install middleclass
     - luarocks install lua-requests
     - luarocks install busted
 
 script:
-  - export CMAKE_ARGS="-DLUA_LIBRARY=${LUALIBRARY} -DLUA_INCLUDE_DIR=${LUAINCLUDE} -D OVERRIDE_VERSION=$AWESOME_VERSION -DSTRICT_TESTS=true"
-  - busted spec/
+  - busted spec/*
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
