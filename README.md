@@ -75,6 +75,12 @@ print(multisig:get_pending("02c7455bebeadde04728441e0f57f82f972155c088252bf7c136
 ### Peer
 
 ```lua
+local Peer = require('peer')
+local peer = Peer()
+print(peer:get_peer("46.231.204.123", "4001"))
+
+>>> {"success":true,"peer":{"ip":"46.231.204.123","port":4001,"version":"1.0.2","errors":0,"os":"linux4.4.0-101-generic","height":2699651,"status":"OK","delay":207}}
+
 ```
 
 ### Signature
