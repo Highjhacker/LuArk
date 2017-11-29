@@ -1,6 +1,5 @@
 local API = require('api')
 local class = require('middleclass')
-local inspect = require('inspect')
 
 local api = API()
 local Delegate = class('Delegate')

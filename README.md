@@ -108,14 +108,20 @@ print(transaction:get_transactions({limit=5, orderBy="timestamp"}))
 ### Transport
 
 ```lua
+local Transport = require('transport')
+local transport = Transport()
+print(transport:get_height())
+
+>>> {"success":true,"height":2699908,"header":{"id":"3142613563561995471","height":2699908,"version":0,"totalAmount":0,"totalFee":0,"reward":200000000,"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"timestamp":21853480,"numberOfTransactions":0,"previousBlock":"14077643656259347353","generatorPublicKey":"027a9b5dc98c75902f871e889fb3076dd27b11e158a49e3915e0307ecd9781f51e","blockSignature":"30440220222953e49143a64798e926a46637f5c7ee1a33c942ebb73e885c4a9a1fbd21ff022070e4308af4efe82beb93aa27e65217d1111e9e35f7b6ccef9fe44db73ba33c74"}}
+
 ```
 
 
 ## TODOS
 
-- [ ] Core code.
-- [ ] Write documentation.
-    - [ ] Basic docs written, need to polish.
+- [x] Core code.
+- [x] Write documentation.
+    - [ ] Polish the documentation, maybe check for a LuaDoc or something.
 - [ ] Unit testing.
     - [ ] Check if it can be better.
 - [ ] Travis.
