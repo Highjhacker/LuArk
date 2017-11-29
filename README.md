@@ -1,5 +1,7 @@
 ![Imgur](https://i.imgur.com/18s3E1o.png)
 
+[![HitCount](http://hits.dwyl.io/Highjhacker/luark.svg)](http://hits.dwyl.io/Highjhacker/luark)[![Build Status](https://travis-ci.org/Highjhacker/LuArk.svg?branch=master)](https://travis-ci.org/Highjhacker/LuArk)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # LuArk
 
 Ark API Wrapper in Lua.
@@ -122,10 +124,15 @@ print(transport:get_height())
 - [x] Core code.
 - [x] Write documentation.
     - [ ] Polish the documentation, maybe check for a LuaDoc or something.
-- [ ] Unit testing.
+- [x] Unit testing.
     - [ ] Check if it can be better.
-- [ ] Travis.
-    - [ ] Missing support for python 3.2.
+    - [ ] Transport - get_block doesn't work (see the comment)
+    - [ ] MultiSignature - get accounts doesn't work (see the comment)
+- [x] Travis.
+    - [x] LuaJit
+    - [x] Lua 5.1
+    - [x] Lua 5.2
+    - [x] Lua 5.3
     - [ ] OSX Support ?
     - [ ] Windows support ?
 - [ ] Better errors handling for the models methods.
