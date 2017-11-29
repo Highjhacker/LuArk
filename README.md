@@ -64,6 +64,12 @@ print(loader:get_status())
 ### MultiSignature
 
 ```lua
+local MultiSignature = require('multisignature')
+local multisig = MultiSignature()
+print(multisig:get_pending("02c7455bebeadde04728441e0f57f82f972155c088252bf7c1365eb0dc84fbf5de"))
+
+>>> {"success":true,"transactions":[]}
+
 ```
 
 ### Peer
