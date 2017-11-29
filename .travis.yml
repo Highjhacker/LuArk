@@ -1,0 +1,18 @@
+language: c
+
+sudo: false
+
+env:
+  global:
+    - LUAROCKS=2.4.1
+  matrix:
+    - LUA=lua5.2
+    - LUA=lua5.3
+
+before_install:
+  - luarocks install middleclass
+  - luarocks install lua-requests
+  - luarocks install busted
+
+script:
+  - busted spec/
