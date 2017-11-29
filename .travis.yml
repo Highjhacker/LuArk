@@ -10,9 +10,14 @@ env:
     - LUA=lua5.3
 
 before_install:
-  - luarocks install middleclass
-  - luarocks install lua-requests
-  - luarocks install busted
+  - if [ ! -f lua_install/bin/luarocks ]; then pip install hererocks; fi
+  - if [ ! -f lua_install/bin/luarocks ]; then hererocks lua_install -r^ --$LUA; fi
+  - export PATH=$PATH:$PWD/lua_install/bin # Add directory with all installed binaries to PATH
+
+install:
+    - luarocks install middleclass
+    - luarocks install lua-requests
+    - luarocks install busted
 
 script:
   - busted spec/
