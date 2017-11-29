@@ -21,4 +21,5 @@ install:
     - luarocks install busted
 
 script:
+  - export CMAKE_ARGS="-DLUA_LIBRARY=${LUALIBRARY} -DLUA_INCLUDE_DIR=${LUAINCLUDE} -D OVERRIDE_VERSION=$AWESOME_VERSION -DSTRICT_TESTS=true"
   - busted spec/
