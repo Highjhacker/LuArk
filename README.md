@@ -13,6 +13,15 @@ Ark API Wrapper in Lua.
 
 ## Installation
 
+### LuaRocks
+
+This will download and install the latest stable release from Luarocks servers.
+
+```shell
+$ luarocks install luark
+```
+
+[LuaRocks module page](http://luarocks.org/modules/Highjhacker/luark)
 
 ## Application Example
 
@@ -138,7 +147,7 @@ print(transport:get_height())
 - [ ] Better errors handling for the models methods.
 - [ ] Sample CLI app.
 - [ ] Allow to post a new transaction.
-- [ ] Make it a LuaRocks package.
+- [x] Make it a LuaRocks package.
 - [x] Handle optionnal parameters.
 
 ## Authors
