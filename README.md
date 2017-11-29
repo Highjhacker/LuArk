@@ -53,6 +53,12 @@ print(delegate:search_delegates({q="dr"}, {limit=2}))
 ### Loader
 
 ```lua
+local Loader = require('loader')
+local loader = Loader()
+print(loader:get_status())
+
+>>> {"success":true,"loaded":false,"now":2626830,"blocksCount":0}
+
 ```
 
 ### MultiSignature
