@@ -1,0 +1,42 @@
+local API = require('api')
+local class = require('middleclass')
+
+local api = API()
+local transaction = require('transaction')
+
+local json = require('json')
+
+describe('transaction()', function()
+
+  describe('when getting a single transaction', function()
+      it('should return true', function()
+          resp = transaction:get_transaction("a38dc6b9e6679be706d5b39eef7dd0a7a10011e63da7623082106d90834e23e1")
+          local toJson = json.decode(resp)
+          assert.same(toJson["success"], true)
+      end)
+  end)
+
+  describe('when getting all transactions', function()
+      it('should return true and limit the results to 5', function()
+          resp = transaction:get_transactions({limit=5})
+          local toJson = json.decode(resp)
+          assert.same(toJson["success"], true)
+      end)
+  end)
+
+  describe('when getting an unconfirmed transaction', function()
+      it('should return false cause this is a confirmed transaction', function()
+          resp = transaction:get_unconfirmed_transaction("a4ee8418827a4cd16a83c01d6623a46149fa1eb7cadb9b9cf0073861e23c8a50")
+          local toJson = json.decode(resp)
+          assert.same(toJson["success"], false)
+      end)
+  end)
+
+  describe('when getting all unconfirmed transactions', function()
+      it('should return true', function()
+          resp = transaction:get_unconfirmed_transactions()
+          local toJson = json.decode(resp)
+          assert.same(toJson["success"], true)
+      end)
+  end)
+end)
