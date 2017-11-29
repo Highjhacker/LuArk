@@ -86,6 +86,12 @@ print(peer:get_peer("46.231.204.123", "4001"))
 ### Signature
 
 ```lua
+local Signature = require('signature')
+local signature = Signature()
+print(signature.get_signature_fee())
+
+>>> {"success":true,"fee":500000000}
+
 ```
 
 ### Transaction
@@ -113,6 +119,8 @@ print(peer:get_peer("46.231.204.123", "4001"))
 - [ ] Better errors handling for the models methods.
 - [ ] Sample CLI app.
 - [ ] Allow to post a new transaction.
+- [ ] Make it a LuaRocks package.
+- [x] Handle optionnal parameters.
 
 ## Authors
 
