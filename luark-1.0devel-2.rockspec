@@ -39,6 +39,7 @@ build = {
     transaction = "transaction.lua",
     transport = "transport.lua",
     utils = "utils.lua",
+    base58 = "base58.lua",
     ["trezor_crypto"] = {
       sources = {
         "trezor-crypto/memzero.c",
