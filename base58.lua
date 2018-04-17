@@ -1,6 +1,11 @@
 -- Credits to leafo: https://github.com/leafo/lua-base58
+-- README says: "It's currently not possible to configure the alphabet
+-- without editing the source."
 
-local alphabet = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz"
+-- We are using a different alphabet, and some operations need to be done
+-- on reversed strings
+
+local alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 local alphabet_i_to_char
 do
 	local _tbl_0 = { }
@@ -119,10 +124,11 @@ encode_base58 = function(str)
 		local _, r = int:div(58)
 		table.insert(buffer, alphabet_i_to_char[r + 1])
 	end
-	return table.concat(buffer)
+	return table.concat(buffer):reverse()
 end
 local decode_base58
 decode_base58 = function(str)
+	str = str:reverse()
 	local out = BigInt()
 	for i = #str, 1, -1 do
 		local char = str:sub(i, i)
