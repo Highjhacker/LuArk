@@ -13,7 +13,9 @@ dependencies = {
   "lua >= 5.1, < 5.3",
   "busted >= 2.0.rc12-1",
   "lua-requests >= 1.1-1",
-  "middleclass >= 4.1-0"
+  "middleclass >= 4.1-0",
+  "basexx >= 0.4.0-1",
+  "struct >= 1.4-1"
 }
 build = {
   type = "builtin",
@@ -39,8 +41,9 @@ build = {
     transaction = "transaction.lua",
     transport = "transport.lua",
     utils = "utils.lua",
+    ec_key = "ec_key.lua",
     base58 = "base58.lua",
-    ["trezor_crypto"] = {
+    trezor_crypto = {
       sources = {
         "trezor-crypto/memzero.c",
         "trezor-crypto/bignum.c",
