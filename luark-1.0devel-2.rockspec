@@ -24,7 +24,6 @@ build = {
     delegate = "delegate.lua",
     json = "json.lua",
     loader = "loader.lua",
-    main = "main.lua",
     multisignature = "multisignature.lua",
     peer = "peer.lua",
     signature = "signature.lua",
@@ -40,7 +39,7 @@ build = {
     transaction = "transaction.lua",
     transport = "transport.lua",
     utils = "utils.lua",
-    ["trezor-crypto"] = {
+    ["trezor_crypto"] = {
       sources = {
         "trezor-crypto/memzero.c",
         "trezor-crypto/bignum.c",
@@ -85,7 +84,7 @@ build = {
         "trezor-crypto/rc4.c",
         "trezor-crypto/nem.c",
         "lua-version-compat.c",
-        "trezor.c"
+        "trezor_crypto.c"
       },
       incdirs = {
           "trezor-crypto/"
