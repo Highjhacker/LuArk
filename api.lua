@@ -13,8 +13,7 @@ function API:initialize(base_url, nethash, version, port)
   self.headers = {
     nethash=nethash or ARK_MAINNET_NETHASH,
     version=version or ARK_MAINNET_VERSION,
-    port=port or ARK_MAINNET_PORT,
-    ['Content-Type']='application/json'
+    port=port or ARK_MAINNET_PORT
   }
 end
 
@@ -33,9 +32,12 @@ function API:get(endpoint, ...)
 end
 
 function API:post(endpoint, ...)
+  local headers = {['Content-Type']='application/json' }
+  for k,v in pairs(self.headers) do headers[k] = v end
+
   local response = requests.post{
     url=self.base_url..endpoint,
-    headers=self.headers,
+    headers=headers,
     data=...,
   }
 

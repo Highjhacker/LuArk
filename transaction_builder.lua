@@ -44,6 +44,41 @@ function Transaction:initialize(
 	self.timestamp = os.time() - Transaction.ARK_EPOCH
 end
 
+function Transaction:to_params()
+	local ret_val = {
+		type=self.type,
+		amount=self.amount,
+		fee=self.fee,
+		timestamp=self.timestamp,
+		id=self.id,
+		signature=self.signature,
+		recipientId=self.recipient_id,
+		vendorField=self.vendor_field,
+		senderPublicKey=Utils:decodeBase16(self.sender_public_key)
+	}
+
+	if self.sign_signature then
+		ret_val.signSignature = self.sign_signature
+	end
+
+	if self.type == Transaction.TYPE.VOTE or  self.type == Transaction.TYPE.MULTISIGNATURE then
+		ret_val.asset = self.asset
+	elseif self.type == Transaction.TYPE.SECOND_SIGNATURE then
+		ret_val.asset = {
+			signature={publicKey=Utils:decodeBase16(self.asset.signature.public_key)}
+		}
+	elseif self.type == Transaction.TYPE.DELEGATE then
+		ret_val.asset = {
+			delegate={
+				username=self.asset.delegate.username,
+				publicKey=Utils:decodeBase16(self.asset.delegate.public_key)
+			}
+		}
+	end
+
+	return ret_val
+end
+
 function Transaction:to_bytes(skip_signature, skip_second_signature)
 	local type = struct.pack('b', self.type)
 	local timestamp = struct.pack('I4', self.timestamp)

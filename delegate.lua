@@ -1,5 +1,6 @@
 local API = require('api')
 local class = require('middleclass')
+local TransactionBuilder = require('transaction_builder')
 
 local api = API()
 local Delegate = class('Delegate')
@@ -72,5 +73,31 @@ function Delegate:get_next_forgers(address)
   -- :param address: Valid Ark address.
   return api:get("api/delegates/getNextForgers", {address=address})
 end
+
+
+function Delegate:vote(delegates, secret, second_secret, network)
+  local tx = TransactionBuilder:create_vote(
+    delegates,
+    secret,
+    second_secret,
+    network or 0x17
+  )
+  local transactions = {}
+  transactions[1] = tx:to_params()
+  return api:post('peer/transactions', {transactions=transactions})
+end
+
+
+function Delegate:create(name, secret, second_secret)
+  local tx = TransactionBuilder:create_delegate(
+    name,
+    secret,
+    second_secret
+  )
+  local transactions = {}
+  transactions[1] = tx:to_params()
+  return api:post('peer/transactions', {transactions=transactions})
+end
+
 
 return Delegate
